@@ -1,11 +1,100 @@
 <resources>
+    <!-- App Info -->
     <string name="app_name">College Companion</string>
-    <string name="today_summary">Today\'s Summary</string>
-    <string name="summary_text">You have 3 classes and 1 assignment due today.</string>
-    <string name="recent_activity">Recent Activity</string>
+    <string name="app_version">Version 1.0.0</string>
+    <string name="app_subtitle">Zero-Latency Voice Assistant</string>
+    <string name="last_updated">Last Updated: December 2025</string>
+
+    <!-- Voice Interaction -->
     <string name="listening">Listening...</string>
+    <string name="processing">Processing...</string>
     <string name="voice_prompt">Tap to speak</string>
+    <string name="voice_button_description">Voice command button - tap to speak</string>
+    <string name="speak_command">Say your command</string>
+
+    <!-- Navigation -->
     <string name="nav_home">Home</string>
     <string name="nav_timetable">Timetable</string>
     <string name="nav_reminders">Reminders</string>
+
+    <!-- Home Screen -->
+    <string name="today_summary">Today\'s Summary</string>
+    <string name="summary_text">You have %1$d classes and %2$d reminders today.</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="no_classes_today">No classes scheduled for today</string>
+    <string name="no_activity">No recent activity</string>
+
+    <!-- Timetable -->
+    <string name="timetable_title">My Timetable</string>
+    <string name="no_classes_scheduled">No classes scheduled</string>
+    <string name="add_class">Add Class</string>
+    <string name="class_room">Room %1$s</string>
+    <string name="class_time">%1$s - %2$s</string>
+
+    <!-- Reminders -->
+    <string name="reminders_title">My Reminders</string>
+    <string name="no_reminders">No active reminders</string>
+    <string name="add_reminder">Add Reminder</string>
+    <string name="reminder_completed">Reminder completed</string>
+    <string name="mark_complete">Mark as Complete</string>
+    <string name="delete_reminder">Delete</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="voice_settings">Voice Settings</string>
+    <string name="enable_tts">Enable Text-to-Speech</string>
+    <string name="tts_description">Hear AI responses aloud</string>
+    <string name="voice_feedback">Voice Feedback</string>
+    <string name="feedback_description">Get audio confirmation for actions</string>
+    <string name="general_settings">General</string>
+    <string name="notifications">Notifications</string>
+    <string name="notification_description">Remind me about classes and tasks</string>
+    <string name="about">About</string>
+    <string name="help_guide">Help &amp; Guide</string>
+    <string name="version_info">Version Information</string>
+
+    <!-- Help Screen -->
+    <string name="help_title">Voice Commands Guide</string>
+    <string name="help_intro">Try these voice commands:</string>
+    <string name="help_command_1">\"What classes do I have today?\"</string>
+    <string name="help_command_2">\"Show my timetable\"</string>
+    <string name="help_command_3">\"What\'s my next class?\"</string>
+    <string name="help_command_4">\"Add reminder to study DSA at 8 PM\"</string>
+    <string name="help_command_5">\"Show my reminders\"</string>
+    <string name="help_command_6">\"Complete reminder [reminder name]\"</string>
+    <string name="help_tips_title">Tips for Best Results:</string>
+    <string name="help_tip_1">• Speak clearly and at a normal pace</string>
+    <string name="help_tip_2">• Ensure good internet connection</string>
+    <string name="help_tip_3">• Reduce background noise</string>
+    <string name="help_tip_4">• Wait for \"Listening...\" prompt</string>
+
+    <!-- Error Messages -->
+    <string name="error_network">Network error. Please check your connection and try again.</string>
+    <string name="error_permission">Microphone permission required for voice commands</string>
+    <string name="error_speech_recognition">Speech recognition not available</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+
+    <!-- Success Messages -->
+    <string name="success_class_added">Class added successfully</string>
+    <string name="success_reminder_added">Reminder added successfully</string>
+    <string name="success_reminder_completed">Reminder marked as complete</string>
+
+    <!-- Dialog Messages -->
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+
+    <!-- Content Descriptions (Accessibility) -->
+    <string name="cd_settings_icon">Settings</string>
+    <string name="cd_back_button">Back</string>
+    <string name="cd_class_icon">Class icon</string>
+    <string name="cd_reminder_icon">Reminder icon</string>
+    <string name="cd_complete_button">Mark as complete</string>
+    <string name="cd_delete_button">Delete</string>
+    <string name="cd_add_button">Add item</string>
+    <string name="cd_mic_button">Voice input button</string>
+    <string name="cd_settings_button">Settings button</string>
+    <string name="cd_help_button">Help button</string>
 </resources>

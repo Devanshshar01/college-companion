@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CollegeCompanion" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.CollegeCompanion" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
@@ -33,5 +33,12 @@
     <style name="BodyText">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_body</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.CollegeCompanion.Splash" parent="Theme.CollegeCompanion">
+        <item name="android:windowBackground">@color/primary</item>
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:navigationBarColor">@color/primary</item>
     </style>
 </resources>

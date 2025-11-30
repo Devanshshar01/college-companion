@@ -21,4 +21,9 @@
     <color name="text_body">#64748B</color>
 
     <color name="listening_pulse">#4010B981</color>
+
+    <color name="ic_launcher_background">#2563EB</color>
+
+    <!-- State colors -->
+    <color name="error">#EF4444</color>
 </resources>
