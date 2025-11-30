@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">College Companion</string>
+    <string name="today_summary">Today\'s Summary</string>
+    <string name="summary_text">You have 3 classes and 1 assignment due today.</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="listening">Listening...</string>
+    <string name="voice_prompt">Tap to speak</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_timetable">Timetable</string>
+    <string name="nav_reminders">Reminders</string>
+</resources>
