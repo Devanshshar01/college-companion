@@ -66,6 +66,27 @@
         <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
     </style>
 
+    <!-- ==================== Shape Appearances ==================== -->
+    <style name="ShapeAppearance.App.FloatingActionButton" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- ==================== Additional Component Styles ==================== -->
+    <style name="Widget.App.CardView.Elevated" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="Widget.App.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/primary_container</item>
+        <item name="android:textColor">@color/on_primary_container</item>
+        <item name="chipCornerRadius">8dp</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body.Small</item>
+    </style>
+
     <!-- ==================== Splash Screen Theme Dark ==================== -->
     <style name="Theme.CollegeCompanion.Splash" parent="Theme.CollegeCompanion">
         <item name="android:windowBackground">@color/primary_container</item>
