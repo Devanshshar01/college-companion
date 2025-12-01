@@ -37,16 +37,38 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupGreeting()
         setupRecyclerView()
         observeData()
     }
 
     /**
-     * Setup RecyclerView for recent activity display.
+     * Setup personalized greeting based on time of day.
+     */
+    private fun setupGreeting() {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+
+        val greetingText = when (hour) {
+            in 0..11 -> "Good Morning"
+            in 12..16 -> "Good Afternoon"
+            in 17..20 -> "Good Evening"
+            else -> "Good Night"
+        }
+
+        binding.greetingText.text = greetingText
+    }
+
+    /**
+     * Setup RecyclerView for recent activity display (horizontal scroll).
      */
     private fun setupRecyclerView() {
         adapter = RecentActivityAdapter(emptyList())
-        binding.recyclerRecent.layoutManager = LinearLayoutManager(context)
+        binding.recyclerRecent.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         binding.recyclerRecent.adapter = adapter
     }
 
@@ -65,12 +87,14 @@ class HomeFragment : Fragment() {
                         isToday(reminder.dateTime)
                     }.size
 
-                    // Update summary text
-                    binding.summaryText.text = getString(
-                        R.string.summary_text,
-                        classCount,
-                        reminderCount
-                    )
+                    // Update summary text with emojis
+                    binding.summaryText.text =
+                        "📚 $classCount Classes  •  ✅ 1 Due  •  🔔 $reminderCount Reminders"
+
+                    // Update individual count displays
+                    binding.classesCount.text = classCount.toString()
+                    binding.remindersCount.text = reminderCount.toString()
+                    binding.tasksCount.text = "1" // Can be updated with actual logic
 
                     // Build activity items from classes and reminders
                     val activityItems = buildActivityItems(classes, reminders)
@@ -126,11 +150,10 @@ class HomeFragment : Fragment() {
     private fun updateRecyclerView(items: List<ActivityItem>) {
         if (items.isEmpty()) {
             binding.recyclerRecent.visibility = View.GONE
-            binding.emptyStateText.visibility = View.VISIBLE
-            binding.emptyStateText.text = getString(R.string.no_activity)
+            binding.emptyStateContainer.visibility = View.VISIBLE
         } else {
             binding.recyclerRecent.visibility = View.VISIBLE
-            binding.emptyStateText.visibility = View.GONE
+            binding.emptyStateContainer.visibility = View.GONE
             adapter.updateItems(items)
         }
     }

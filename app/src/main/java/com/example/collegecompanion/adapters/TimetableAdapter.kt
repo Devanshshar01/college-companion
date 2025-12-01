@@ -29,10 +29,59 @@ class TimetableAdapter : RecyclerView.Adapter<TimetableAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = classes[position]
         holder.binding.apply {
+            // Class name
             className.text = item.className
+
+            // Time range with icon
             classTime.text = "${item.startTime} - ${item.endTime}"
-            classRoom.text = "Room ${item.roomNumber}"
-            classType.text = item.classType
+
+            // Room number
+            classRoom.text = item.roomNumber
+
+            // Class type chip
+            classTypeChip.text = item.classType
+
+            // Day abbreviation from day number
+            dayShort.text = getDayAbbreviation(item.dayOfWeek)
+
+            // Calculate and display duration
+            val durationMinutes = calculateDuration(item.startTime, item.endTime)
+            duration.text = "$durationMinutes min"
+        }
+    }
+
+    /**
+     * Get day abbreviation from day number (1-7).
+     */
+    private fun getDayAbbreviation(dayNumber: Int): String {
+        return when (dayNumber) {
+            1 -> "MON"
+            2 -> "TUE"
+            3 -> "WED"
+            4 -> "THU"
+            5 -> "FRI"
+            6 -> "SAT"
+            7 -> "SUN"
+            else -> "MON"
+        }
+    }
+
+    /**
+     * Calculate duration between start and end times.
+     */
+    private fun calculateDuration(startTime: String, endTime: String): Int {
+        return try {
+            val format = java.text.SimpleDateFormat("hh:mm a", java.util.Locale.US)
+            val start = format.parse(startTime)
+            val end = format.parse(endTime)
+            if (start != null && end != null) {
+                val diffInMillis = end.time - start.time
+                (diffInMillis / (1000 * 60)).toInt() // Convert to minutes
+            } else {
+                90 // Default duration
+            }
+        } catch (e: Exception) {
+            90 // Default duration on error
         }
     }
 

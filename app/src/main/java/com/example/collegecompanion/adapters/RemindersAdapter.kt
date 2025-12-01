@@ -35,26 +35,47 @@ class RemindersAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = reminders[position]
         holder.binding.apply {
+            // Title
             reminderTitle.text = item.title
-            reminderDescription.text = item.description.ifEmpty { "No description" }
+
+            // Description (show/hide based on content)
+            if (item.description.isNotEmpty()) {
+                reminderDescription.text = item.description
+                reminderDescription.visibility = android.view.View.VISIBLE
+            } else {
+                reminderDescription.visibility = android.view.View.GONE
+            }
+
+            // Time
             reminderTime.text = dateFormat.format(Date(item.dateTime))
 
-            // Set priority indicator
-            val priorityColor = when (item.priority) {
+            // Set priority indicator drawable based on priority
+            val priorityDrawable = when (item.priority) {
                 com.example.collegecompanion.data.Priority.HIGH ->
-                    android.graphics.Color.parseColor("#EF4444")
+                    com.example.collegecompanion.R.drawable.priority_indicator_high
 
                 com.example.collegecompanion.data.Priority.MEDIUM ->
-                    android.graphics.Color.parseColor("#F59E0B")
+                    com.example.collegecompanion.R.drawable.priority_indicator_medium
 
                 com.example.collegecompanion.data.Priority.LOW ->
-                    android.graphics.Color.parseColor("#10B981")
+                    com.example.collegecompanion.R.drawable.priority_indicator_low
             }
-            priorityIndicator.setBackgroundColor(priorityColor)
+            priorityIndicator.setBackgroundResource(priorityDrawable)
 
-            // Handle complete button click
-            btnComplete.setOnClickListener {
-                onCompleteClick(item)
+            // Priority chip (show/hide based on priority)
+            if (item.priority == com.example.collegecompanion.data.Priority.HIGH) {
+                priorityChip.visibility = android.view.View.VISIBLE
+                priorityChip.text = "High"
+            } else {
+                priorityChip.visibility = android.view.View.GONE
+            }
+
+            // Checkbox for completion
+            checkboxComplete.isChecked = false
+            checkboxComplete.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    onCompleteClick(item)
+                }
             }
 
             // Handle delete button click

@@ -73,8 +73,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // Material Design
+    // Material Design 3
     implementation 'com.google.android.material:material:1.11.0'
+
+    // Additional UI Components
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
@@ -108,6 +112,9 @@ dependencies {
 
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    // Preferences (for theme switching)
+    implementation 'androidx.preference:preference-ktx:1.2.1'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

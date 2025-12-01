@@ -7,17 +7,27 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <!-- Header -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <!-- Elegant Header with Gradient -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
-        android:elevation="4dp"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/white"
-        app:menu="@menu/toolbar_menu"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_card_background"
+            android:elevation="4dp"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/TextAppearance.App.Toolbar.Title"
+            app:titleTextColor="@color/text_on_primary"
+            app:menu="@menu/toolbar_menu" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Content Area (Fragment Container) -->
     <androidx.fragment.app.FragmentContainerView
@@ -27,59 +37,132 @@
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav" />
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toTopOf="@id/voice_interaction_container" />
 
-    <!-- Voice Interaction Area (Persistent) -->
-    <TextView
-        android:id="@+id/voice_feedback_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:gravity="center"
-        android:text="@string/voice_prompt"
-        android:textColor="@color/text_body"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/voice_fab"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <View
-        android:id="@+id/pulse_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/circle_pulse"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/voice_fab"
-        app:layout_constraintTop_toTopOf="@id/voice_fab"
-        app:layout_constraintStart_toStartOf="@id/voice_fab"
-        app:layout_constraintEnd_toEndOf="@id/voice_fab" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/voice_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="@string/listening"
-        android:src="@drawable/ic_mic"
-        app:backgroundTint="@color/primary"
-        app:tint="@color/white"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+    <!-- Voice Interaction Container (Elevated Card) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/voice_interaction_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/surface"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="0dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="24dp"
+            android:paddingHorizontal="24dp">
+
+            <!-- Response Display Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/response_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/surface_variant"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/voice_feedback_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/voice_prompt"
+                        android:textAppearance="@style/TextAppearance.App.Body.Medium"
+                        android:textColor="@color/text_secondary"
+                        android:minHeight="48dp"
+                        android:paddingVertical="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pulse Rings (Multiple layers for depth) -->
+            <View
+                android:id="@+id/pulse_view_outer"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/pulse_ring_large"
+                android:visibility="invisible"
+                android:alpha="0.3"
+                app:layout_constraintBottom_toBottomOf="@id/voice_fab"
+                app:layout_constraintTop_toTopOf="@id/voice_fab"
+                app:layout_constraintStart_toStartOf="@id/voice_fab"
+                app:layout_constraintEnd_toEndOf="@id/voice_fab" />
+
+            <View
+                android:id="@+id/pulse_view"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/circle_pulse"
+                android:visibility="invisible"
+                android:alpha="0.5"
+                app:layout_constraintBottom_toBottomOf="@id/voice_fab"
+                app:layout_constraintTop_toTopOf="@id/voice_fab"
+                app:layout_constraintStart_toStartOf="@id/voice_fab"
+                app:layout_constraintEnd_toEndOf="@id/voice_fab" />
+
+            <!-- Hero Voice FAB (Large & Prominent) -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/voice_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_mic_button"
+                android:src="@drawable/ic_mic"
+                app:backgroundTint="@color/primary"
+                app:tint="@color/white"
+                app:fabSize="auto"
+                app:fabCustomSize="80dp"
+                app:maxImageSize="40dp"
+                app:elevation="8dp"
+                app:hoveredFocusedTranslationZ="12dp"
+                app:pressedTranslationZ="12dp"
+                app:shapeAppearance="@style/ShapeAppearance.App.FloatingActionButton"
+                app:layout_constraintTop_toBottomOf="@id/response_card"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Status Indicator Text Below FAB -->
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/voice_prompt"
+                android:textAppearance="@style/TextAppearance.App.Body.Small"
+                android:textColor="@color/text_tertiary"
+                android:alpha="0.8"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/voice_fab"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Enhanced Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        style="@style/Widget.App.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:menu="@menu/bottom_nav_menu"
-        app:itemIconTint="@color/primary"
-        app:itemTextColor="@color/primary"
-        app:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

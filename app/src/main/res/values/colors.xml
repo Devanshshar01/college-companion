@@ -1,29 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- ==================== GEMINI-INSPIRED LIGHT MODE COLORS ==================== -->
 
-    <!-- College Companion Palette -->
-    <color name="primary">#2563EB</color>
-    <color name="primary_variant">#1D4ED8</color>
-    <color name="secondary">#10B981</color>
-    <color name="secondary_variant">#059669</color>
+    <!-- Primary Colors - Vibrant Blue (Trust, Professional) -->
+    <color name="primary">#0F7DFF</color>
+    <color name="primary_dark">#0056CC</color>
+    <color name="primary_container">#E3F2FD</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#0056CC</color>
 
-    <color name="background">#F8FAFC</color>
-    <color name="surface">#FFFFFF</color>
+    <!-- Secondary Colors - Fresh Cyan (Modern, Conversational) -->
+    <color name="secondary">#00D9FF</color>
+    <color name="secondary_dark">#0097B2</color>
+    <color name="secondary_container">#B2EBF2</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_container">#0097B2</color>
 
-    <color name="text_heading">#1E293B</color>
-    <color name="text_body">#64748B</color>
+    <!-- Tertiary Colors - Mint (Success, Positive, Highlights) -->
+    <color name="tertiary">#1EE0C6</color>
+    <color name="tertiary_dark">#00B8A0</color>
+    <color name="tertiary_container">#B2F5EA</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="on_tertiary_container">#00B8A0</color>
 
-    <color name="listening_pulse">#4010B981</color>
+    <!-- Background & Surface -->
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#F3F6FC</color>
+    <color name="surface_dim">#E8EBF0</color>
+    <color name="on_background">#202124</color>
+    <color name="on_surface">#202124</color>
+    <color name="on_surface_variant">#A8ABAB</color>
 
-    <color name="ic_launcher_background">#2563EB</color>
+    <!-- Text Colors -->
+    <color name="text_primary">#202124</color>
+    <color name="text_secondary">#80868B</color>
+    <color name="text_tertiary">#A8ABAB</color>
 
-    <!-- State colors -->
-    <color name="error">#EF4444</color>
+    <!-- State Colors -->
+    <color name="error">#E53935</color>
+    <color name="error_container">#FFEBEE</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_error_container">#E53935</color>
+
+    <color name="success">#1EE0C6</color>
+    <color name="success_container">#B2F5EA</color>
+    <color name="on_success">#FFFFFF</color>
+    <color name="on_success_container">#00B8A0</color>
+
+    <color name="warning">#FB8C00</color>
+    <color name="warning_container">#FFF3E0</color>
+    <color name="on_warning">#FFFFFF</color>
+    <color name="on_warning_container">#FB8C00</color>
+
+    <!-- Outline & Borders -->
+    <color name="outline">#D0D0D5</color>
+    <color name="outline_variant">#E8E8ED</color>
+
+    <!-- Scrim (Overlay) -->
+    <color name="scrim">#202124</color>
+
+    <!-- Priority Colors (for Reminders) -->
+    <color name="priority_urgent">#E53935</color>
+    <color name="priority_high">#FB8C00</color>
+    <color name="priority_medium">#0F7DFF</color>
+    <color name="priority_low">#1EE0C6</color>
+
+    <!-- Pulse & Animation Colors -->
+    <color name="listening_pulse">#4000D9FF</color>
+    <color name="pulse_ring">#2000D9FF</color>
+
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Ripple Effect -->
+    <color name="ripple_primary">#200F7DFF</color>
+    <color name="ripple_secondary">#2000D9FF</color>
+
+    <!-- Legacy Names (for backward compatibility) -->
+    <color name="text_heading">#202124</color>
+    <color name="text_body">#A8ABAB</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="primary_variant">#0056CC</color>
+    <color name="secondary_variant">#0097B2</color>
+    <color name="primary_light">#E3F2FD</color>
+    <color name="secondary_light">#B2EBF2</color>
+    <color name="tertiary_variant">#00B8A0</color>
+    <color name="tertiary_light">#B2F5EA</color>
+    <color name="surface_variant">#E8EBF0</color>
+    <color name="divider">#E8E8ED</color>
+    <color name="border">#D0D0D5</color>
+    <color name="shadow">#1A202124</color>
+    <color name="overlay_light">#10202124</color>
+    <color name="overlay_medium">#40202124</color>
+    <color name="overlay_dark">#80202124</color>
+    <color name="ic_launcher_background">#0F7DFF</color>
 </resources>

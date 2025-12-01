@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Theme Settings Category -->
+    <PreferenceCategory
+        android:title="Appearance"
+        android:key="appearance_category">
+
+        <ListPreference
+            android:key="app_theme"
+            android:title="Theme"
+            android:summary="Choose your preferred theme"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values"
+            android:defaultValue="system"
+            android:icon="@drawable/ic_settings"
+            app:iconSpaceReserved="true" />
+
+    </PreferenceCategory>
+
+    <!-- Voice Settings Category -->
+    <PreferenceCategory
+        android:title="Voice Assistant"
+        android:key="voice_category">
+
+        <SwitchPreferenceCompat
+            android:key="enable_tts"
+            android:title="Text-to-Speech"
+            android:summary="Hear AI responses aloud"
+            android:defaultValue="true"
+            app:iconSpaceReserved="true" />
+
+        <SwitchPreferenceCompat
+            android:key="enable_haptic"
+            android:title="Haptic Feedback"
+            android:summary="Vibrate on interactions"
+            android:defaultValue="true"
+            app:iconSpaceReserved="true" />
+
+    </PreferenceCategory>
+
+    <!-- Notifications Category -->
+    <PreferenceCategory
+        android:title="Notifications"
+        android:key="notifications_category">
+
+        <SwitchPreferenceCompat
+            android:key="enable_notifications"
+            android:title="Enable Notifications"
+            android:summary="Get reminders for classes and tasks"
+            android:defaultValue="true"
+            app:iconSpaceReserved="true" />
+
+    </PreferenceCategory>
+
+    <!-- About Category -->
+    <PreferenceCategory
+        android:title="About"
+        android:key="about_category">
+
+        <Preference
+            android:key="app_version"
+            android:title="Version"
+            android:summary="2.0.0 - Gemini Edition"
+            android:selectable="false"
+            app:iconSpaceReserved="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

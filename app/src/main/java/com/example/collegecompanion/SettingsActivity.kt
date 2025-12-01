@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.ListPreference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import com.example.collegecompanion.databinding.ActivitySettingsBinding
 
 /**
  * Settings Activity - Manages app preferences and configuration.
- * Provides toggles for voice features, dark mode, and access to help documentation.
+ * Provides theme switching, voice features, and notifications.
  */
 class SettingsActivity : AppCompatActivity() {
 
@@ -53,8 +56,43 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupToolbar()
-        loadPreferences()
-        setupListeners()
+
+        // Load settings fragment
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.settings_container, SettingsFragment())
+                .commit()
+        }
+    }
+
+    /**
+     * Settings Fragment - Contains all preference items.
+     */
+    class SettingsFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.settings_preferences, rootKey)
+
+            // Setup theme preference listener
+            val themePreference = findPreference<ListPreference>("app_theme")
+            themePreference?.setOnPreferenceChangeListener { _, newValue ->
+                when (newValue) {
+                    "light" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }
+
+                    "dark" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+
+                    "system" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    }
+                }
+                requireActivity().recreate()
+                true
+            }
+        }
     }
 
     /**

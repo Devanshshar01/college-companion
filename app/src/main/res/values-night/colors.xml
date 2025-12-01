@@ -1,29 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Mode Colors -->
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#BB86FC</color>
-    <color name="purple_700">#3700B3</color>
-    <color name="teal_200">#03DAC6</color>
-    <color name="teal_700">#018786</color>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
+    <!-- ==================== GEMINI-INSPIRED DARK MODE COLORS ==================== -->
 
-    <!-- Dark Mode College Companion Palette -->
-    <color name="primary">#5B8DEF</color>
-    <color name="primary_variant">#3A7BD5</color>
-    <color name="secondary">#34D399</color>
-    <color name="secondary_variant">#10B981</color>
+    <!-- Primary Colors - Bright Blue (Readable on Dark) -->
+    <color name="primary">#B3D9FF</color>
+    <color name="primary_dark">#E3F2FD</color>
+    <color name="primary_container">#0056CC</color>
+    <color name="on_primary">#0056CC</color>
+    <color name="on_primary_container">#B3D9FF</color>
 
-    <!-- Dark backgrounds -->
+    <!-- Secondary Colors - Bright Cyan (Visible in Dark) -->
+    <color name="secondary">#4FD9FF</color>
+    <color name="secondary_dark">#B2EBF2</color>
+    <color name="secondary_container">#006064</color>
+    <color name="on_secondary">#006064</color>
+    <color name="on_secondary_container">#4FD9FF</color>
+
+    <!-- Tertiary Colors - Bright Mint (Visible in Dark) -->
+    <color name="tertiary">#66F0DC</color>
+    <color name="tertiary_dark">#B2F5EA</color>
+    <color name="tertiary_container">#004D3D</color>
+    <color name="on_tertiary">#004D3D</color>
+    <color name="on_tertiary_container">#66F0DC</color>
+
+    <!-- Background & Surface (True Black for OLED) -->
     <color name="background">#121212</color>
     <color name="surface">#1E1E1E</color>
+    <color name="surface_dim">#0F0F0F</color>
+    <color name="on_background">#E8E8ED</color>
+    <color name="on_surface">#E8E8ED</color>
+    <color name="on_surface_variant">#A8ABAB</color>
 
-    <!-- Dark text colors -->
-    <color name="text_heading">#E8EAED</color>
-    <color name="text_body">#9AA0A6</color>
+    <!-- Text Colors (High Contrast for Dark Mode) -->
+    <color name="text_primary">#E8E8ED</color>
+    <color name="text_secondary">#A8ABAB</color>
+    <color name="text_tertiary">#80868B</color>
 
-    <color name="listening_pulse">#4034D399</color>
+    <!-- State Colors (Bright for Dark Background) -->
+    <color name="error">#FF8A80</color>
+    <color name="error_container">#5F2C2C</color>
+    <color name="on_error">#5F2C2C</color>
+    <color name="on_error_container">#FF8A80</color>
 
-    <color name="ic_launcher_background">#5B8DEF</color>
+    <color name="success">#66F0DC</color>
+    <color name="success_container">#1B4D45</color>
+    <color name="on_success">#1B4D45</color>
+    <color name="on_success_container">#66F0DC</color>
+
+    <color name="warning">#FFB74D</color>
+    <color name="warning_container">#663D00</color>
+    <color name="on_warning">#663D00</color>
+    <color name="on_warning_container">#FFB74D</color>
+
+    <!-- Outline & Borders (Light for Dark Background) -->
+    <color name="outline">#4F4F54</color>
+    <color name="outline_variant">#2F2F34</color>
+
+    <!-- Scrim (Dark Overlay) -->
+    <color name="scrim">#121212</color>
+
+    <!-- Priority Colors (Adjusted for Dark Mode) -->
+    <color name="priority_urgent">#FF8A80</color>
+    <color name="priority_high">#FFB74D</color>
+    <color name="priority_medium">#B3D9FF</color>
+    <color name="priority_low">#66F0DC</color>
+
+    <!-- Pulse & Animation Colors -->
+    <color name="listening_pulse">#404FD9FF</color>
+    <color name="pulse_ring">#204FD9FF</color>
+
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Ripple Effect -->
+    <color name="ripple_primary">#20B3D9FF</color>
+    <color name="ripple_secondary">#204FD9FF</color>
+
+    <!-- Legacy Names (for backward compatibility) -->
+    <color name="text_heading">#E8E8ED</color>
+    <color name="text_body">#A8ABAB</color>
+    <color name="text_on_primary">#0056CC</color>
+    <color name="primary_variant">#E3F2FD</color>
+    <color name="secondary_variant">#B2EBF2</color>
+    <color name="primary_light">#0056CC</color>
+    <color name="secondary_light">#006064</color>
+    <color name="tertiary_variant">#B2F5EA</color>
+    <color name="tertiary_light">#004D3D</color>
+    <color name="surface_variant">#2A2A2A</color>
+    <color name="divider">#2F2F34</color>
+    <color name="border">#4F4F54</color>
+    <color name="shadow">#40000000</color>
+    <color name="overlay_light">#10FFFFFF</color>
+    <color name="overlay_medium">#40FFFFFF</color>
+    <color name="overlay_dark">#80FFFFFF</color>
+    <color name="ic_launcher_background">#B3D9FF</color>
 </resources>

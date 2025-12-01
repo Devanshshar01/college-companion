@@ -18,9 +18,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.example.collegecompanion.databinding.ActivityMainBinding
 import com.example.collegecompanion.viewmodel.MainViewModel
 import com.example.collegecompanion.voice.VoiceEngine
@@ -61,6 +63,9 @@ class MainActivity : AppCompatActivity(), VoiceEngine.VoiceCallback {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply saved theme preference BEFORE calling super.onCreate()
+        applyThemeFromPreferences()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -70,6 +75,26 @@ class MainActivity : AppCompatActivity(), VoiceEngine.VoiceCallback {
         setupToolbar()
         setupVoiceInteraction()
         observeViewModel()
+    }
+
+    /**
+     * Apply theme from SharedPreferences.
+     */
+    private fun applyThemeFromPreferences() {
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme = sharedPrefs.getString("app_theme", "system") ?: "system"
+        applyTheme(theme)
+    }
+
+    /**
+     * Apply selected theme.
+     */
+    private fun applyTheme(theme: String) {
+        when (theme) {
+            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
     }
 
     /**
@@ -302,21 +327,45 @@ class MainActivity : AppCompatActivity(), VoiceEngine.VoiceCallback {
     }
 
     /**
-     * Start pulse animation on listening indicator.
+     * Start pulse animation on listening indicator with multiple rings.
      */
     private fun startPulseAnimation() {
         binding.pulseView.visibility = View.VISIBLE
+        binding.pulseViewOuter.visibility = View.VISIBLE
+        
+        // Inner pulse animation
         pulseAnimator = ObjectAnimator.ofPropertyValuesHolder(
             binding.pulseView,
-            PropertyValuesHolder.ofFloat("scaleX", 1f, 1.3f),
-            PropertyValuesHolder.ofFloat("scaleY", 1f, 1.3f),
-            PropertyValuesHolder.ofFloat("alpha", 0.7f, 0.3f)
+            PropertyValuesHolder.ofFloat("scaleX", 1f, 1.5f),
+            PropertyValuesHolder.ofFloat("scaleY", 1f, 1.5f),
+            PropertyValuesHolder.ofFloat("alpha", 0.6f, 0.0f)
         ).apply {
-            duration = 1000
+            duration = 1500
             repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
+            repeatMode = ObjectAnimator.RESTART
             start()
         }
+        
+        // Outer pulse animation (delayed)
+        ObjectAnimator.ofPropertyValuesHolder(
+            binding.pulseViewOuter,
+            PropertyValuesHolder.ofFloat("scaleX", 1f, 1.8f),
+            PropertyValuesHolder.ofFloat("scaleY", 1f, 1.8f),
+            PropertyValuesHolder.ofFloat("alpha", 0.4f, 0.0f)
+        ).apply {
+            duration = 1500
+            startDelay = 300
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.RESTART
+            start()
+        }
+        
+        // FAB scale animation
+        binding.voiceFab.animate()
+            .scaleX(1.1f)
+            .scaleY(1.1f)
+            .setDuration(200)
+            .start()
     }
 
     /**
@@ -325,9 +374,20 @@ class MainActivity : AppCompatActivity(), VoiceEngine.VoiceCallback {
     private fun stopPulseAnimation() {
         pulseAnimator?.cancel()
         binding.pulseView.visibility = View.INVISIBLE
+        binding.pulseViewOuter.visibility = View.INVISIBLE
         binding.pulseView.scaleX = 1f
         binding.pulseView.scaleY = 1f
         binding.pulseView.alpha = 1f
+        binding.pulseViewOuter.scaleX = 1f
+        binding.pulseViewOuter.scaleY = 1f
+        binding.pulseViewOuter.alpha = 1f
+        
+        // Reset FAB scale
+        binding.voiceFab.animate()
+            .scaleX(1.0f)
+            .scaleY(1.0f)
+            .setDuration(200)
+            .start()
     }
 
     // VoiceEngine.VoiceCallback implementations
